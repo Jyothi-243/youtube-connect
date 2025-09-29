@@ -370,13 +370,11 @@ const CommentList = ({ comments }) => {
     //Dont use Index because we have to use the unique id for this but when we dont have the unique id then we have to use the index (but in PROD , dont use).
     //these replies are just these comments only. 
     return comments.map((comment, index) => (
-        <div>
+        <div >
             <Comment key={index} data={comment} />
             <div className="comment-reply">
-                <Comment key={index} data={comment} />
-                <Comment key={index} data={comment} />
-                <Comment key={index} data={comment} />
-                <Comment key={index} data={comment} />
+                <CommentList comments={comment.replies || []} />
+                {/* here i am recursing the component means calling the component again and again  */}
             </div>
         </div>
     ))

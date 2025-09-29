@@ -52,8 +52,8 @@ as the reducers are the functions , we have to write the arrow functions for the
 # Scrollable bar for the buttons list in the youtube. (css thing to build) //home work , 
 1. for the watch page create the like share subscribe buttons like that.
 2. if we click on the search result then it has to shows the results like youtube.
-
-# youtube video api , youtube api key auth (for the key and credentials) //
+3. when we click on the search result , then it has to show the results(in the search bar of the youtube project)
+# youtube video api , youtube api key auth (for the key and credentials) // 
 --> in that page , we have the credentials page(link) ,
 
 # Difference between axios and fetch (handling json)
@@ -205,4 +205,28 @@ const CommentList = (comments) => {
         <Comment data={comment} />
     ))
 }
+
+# **** in DSA , whenever there is a word circular in the problem , array, linkedlist try to double the array.  example: Next greater element-|| 
+means if the array is [1,2,3,4,5,6] then try to double that [1,2,3,4,5,6,1,2,3,4,5,6]; //when we make the array as double then circular will be cancelled means normal array. 
+Trick : when we see the circular then , we can use 2 approaches means (make the array as double and we can iterate the array  2 times without using the extra space) //1. doubling the array 2. doubling the indeces.  
+
+# forgetting every time that, for the loops , i am keeping <= (instead of >=) while reversing the array. 
+
+while doing the DSA , try to find out where we are missing means (issue in the approach or issue in the writing the code. )
+// if we not able to build the logic , we have to improve on thinking and logc building. if we can able to write the code then we have to improve the coding skills. 
+
+
+3-part of the youtube project: 
+Building the infinite scroll, or live chat 
+<!-- Live Chat >>>>> infinite scroll >>>>> pagination -->
+
+# in js , we have somethings like , unshift (to remove from the top) splice(10, 1)(only 10 messages then we wil remove 1 from top) and slice(10,)
+useRef(), useCallback(), useMemo() hooks. in yt project. 
+
+if the basics are right nobody can challenge you . (basics are important).
+useRef() : not needed for the rendering. react hook , that lets you reference a value thats not needed for rendering. 
+
+for the setInterval() , we have to use the garbage collect that. means clearInterval also, otherwise it will run in background. 
+
+
 
