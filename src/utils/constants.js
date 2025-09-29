@@ -1,4 +1,4 @@
-const GOOGLE_API_KEY = "AIzaSyAVSR63ZxpERYp359ItqZlxacXjH4rlsdI";
+const GOOGLE_API_KEY = "";
 // AIzaSyAVSR63ZxpERYp359ItqZlxacXjH4rlsdI
 
 //we have to keep this in env files while deploying and all for the better security. 

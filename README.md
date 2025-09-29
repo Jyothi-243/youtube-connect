@@ -228,5 +228,9 @@ useRef() : not needed for the rendering. react hook , that lets you reference a 
 
 for the setInterval() , we have to use the garbage collect that. means clearInterval also, otherwise it will run in background. 
 
+YT project : 3rd video
+infinite scroll means( when the page is scrolled then i want to show the some data means making the api call based on the scrolling.) 
+Live Chat >>>> Infinite Scroll >>>> Pagination 
+
 
 
