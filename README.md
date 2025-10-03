@@ -232,5 +232,125 @@ YT project : 3rd video
 infinite scroll means( when the page is scrolled then i want to show the some data means making the api call based on the scrolling.) 
 Live Chat >>>> Infinite Scroll >>>> Pagination 
 
+instead of hardcoding the api keys in our project , store the api key in a .env value(it will never commit to the github),we can use that in Github secrets 
+usingg Secret Managers (Google Secret manager, aws secret manager, Vault)(these services manage and rotate keys securely). 
+
+Challenges of live chat: 
+-> to get data live . 
+-> updation of the data on the page.  even the page is open for the 1 hour the page does not have to freeze. 
+if the data in the live chat is not the live then we can call the useEffect and again we can set the data. 
+
+Handling the Live data: 
+1. Web Sockets, (web sockets is a 2-way connection , like handshaking between the server and the UI. so we can quickly send the data from either sides. it is bi-directional means we can send data from UI to Backend or Backend to UI also. as soon as we open the application , websocket connection is established. now we can send the data immediately from both sides.) (no interval) may be 0 milliseconds, 10 milliseconds, 10 minutes later. in websockets , intial connection takes time. and we can send the data any time we want. 
+2. Long Polling or api polling. (UI requests the Backend and the data is send from the server.) (based on the regular intervals). (single way connection.) (uni-directional).      
+G-mail is web-socket or Api Polling: Ans: Api Polling.  As we dont want the Gmail is very real-time , getting the email after 10secs is also fine. 
+
+while implementing this , we have to ask some Questions, like 
+the moment we get the email, we have to send the mail to the receiver ? or not ? after 10 secs also getting the email is fine. so we can do api polling for the G-mail kind of thing
+
+if the application like stock market (live-trading platform) then we need the web-sockets. (because we need to be very close to real time) because things can change with in milliseconds. 
+
+If the application like whatsapp , then we need the real-time data(we use web-sockets)
+
+Cricbuzz(cricket commentary system)(it will use api polling because , for every batting, it will take some secs of time.so we can use 25secs of time between the api polling.it is kind of aligning to the cricket.we can see the what is happening in the console, so that we can understand what is happening in the console. )
+
+Soccer(commentary for soccer, still do the api polling with less seconds because even for the writing the comments it will take time.)(this will help you in the system Design interview.)
+
+Youtube live Chats( uses api polling )
+
+Most of the times, code is the easiest part of building an application. once we understand the concepts , we can write the code very easily. (so focus up on the core concepts.) youtube is making the api calls for every 1.5 secs for the live-chat.  we can do this for every 5 secs also, but youtube want to do this live-time. while chat order doesnot matter. 
+
+staff-engineers will do this stuff of live-chat like that , so they will manage the things().they do the best optimization for the application(after the tech-lead , we have the 2 postions and after that staff-engineers will be there.)
+
+in the live-chat of youtube , page is not freezing, because YT has implemented , as the messages reach the certain limit they will remove the messages from the top. it will clean up the mess itself. like after reaching the 100 or 200 messages, it will clean up the messages. 
+
+we have the document.getElementByTagName("tag_name"). After a while Youtube removes the messages from the top. 
+
+while coding do it step-wise not write the code by using map directly. 
+we have to write the code like when we write the code , we have to know that when we open the webpage. 
+
+whenever we are doing the setIntervel then we have to clean the garbage also , means we have to use the clearIntervel also. 
+
+write the notes for the creating a slice and their usage. in redux for the chatSlice.js file. and adding that slice to the store. and note how the useDispatch and subscribe will be written and their syntax. 
+
+dispatch(addMessage({
+                name: generateRandomNames(),
+                message: "this is the live chat from the redux store 🚀",
+})) //here we are calling the function for generating the random names.
 
 
+while building the live chat the new messages have to come down so that old message have to be in top. 
+so in the array when we push it has to go in the front. and not the last (push in the first) //example : state.messages.unshift(action.payload)
+
+when there is no limit , then the page will get freeze in the live chat , so we have to set the limit for the page not to get freeze.
+
+splice(length, count) //takes 2 parameters, 1. length (to keep the length for the list) 2. count (to remove the count from the top of the list) 
+splice(10,1) //keeps the 11 messages in the list and removes if exceeds 11 and from the top, it removes
+
+know about the retry - mechanism in the kafka, and the sqs messages.  based on the count we retry the mechanism, we have to retry for the mechanism. 
+
+why when we submit the form , we have to prevent the preventDefault() for the form and read about the preventDefault. 
+
+
+# webrtc, l3 websockets,  kafka 
+
+onscrolleent() make the api call and to build infinite scroll. we will keep all the videos in the redux store and then on appending on our redux store and keep the offset. 
+
+part-4: 
+react hooks : useState and useEffect hooks are most used hooks.  
+useParams(given by react-router) and useSearchParams , useContext 
+ 
+## useMemo caches the value. 
+useMemo is the React hook that lets you cache the result of a calculation between the re-renders.  (means any expensive operation.)
+when does my component re-render ? Ans: When i update my State. 
+
+why strictMode is used ? in react . (in dev mode and production mode).
+
+we can memorize the heavy operation while re-renders. for this we use useMemo() 
+example : calculating the 7-digit prime number , and for render it is calculating (we want to stop those, and when to to toggle the bdark and light theme then we want to calculate the prime number for every render.)
+
+
+we want to memorize the value return from the function is , 
+usage:  useMemo(()=>functionName(text), [dependencies]);  //here it will memorize the result from this function. it will take dependencies also. it will memorize this and only changes when the value changes.
+--> It will caches the results between re-renders until the dependencies changes. 
+
+the problem with react is it re-renders the component anytime the state variable changes or any prop changes. 
+
+--> for every browser tab, chrome allocates the memory. if any tab frozes then it dont affect the browser(whole chrome).if the component lagging then memorize the value or component. 
+
+# useCallback() hook: useCallback() is a react hook that lets you cache the function definition between the re-renders. 
+usage: const cachedFn = useCallback(function, dependencies)
+
+# useRef() , a react hook that lets you reference a value thats not needed for rendering. 
+const ref = useRef(initialValue); //we want the value in a variable but we dont want the component to re-render. here we can use the const variable also but when we want to update then we use useState only so component will re-render but we dont the re-render while changing.  we have to use like we want to change the value but dont want to re-render. 
+
+# while developing anything , we have to think like why we have to use this not like how to use this.  
+
+usage for the useRef(), 
+for the state variables , the value would be updated and it will re-render also. 
+
+--> whenever the component re-renders it will refreshes my let value.
+while learning , we have to have some curosity. 
+
+<!-- # if the basics are right then nobody can challenge/defeat us -->
+
+when we have the let , what is the need of the state variables? because for the state variable value changes and component also re-renders. 
+
+useRef # i want the variable which should not get reset when my re-render happens but it holds that value still, react should track it. 
+
+dont use short cuts. 
+
+ref is like an object. 
+
+<!-- not like => ref = 0 
+like ref = { current: 0 } --> //instead of the value, when we created the useRef it comes as an object, with the current hard-coded in that. so 
+that's why we can print the console.log(ref) , we have to print like the console.log(ref.current) 
+when we want to update the the ref value then we dont have the set function for this.
+
+we have to update this like , onClick= {()=>{
+  ref.current= ref.current+1;
+}}
+// and when the component re-renders then only updated value will appear in the UI. 
+<!-- for the random values, we can use Math.random() -->
+
+when we use the setInterval() then we have to use the clearInterval in the  return function of the useEffect (return will run when the componnet unmounts.)

@@ -24,7 +24,7 @@ const Head = () => {
                 setSuggestions(searchCache[searchQuery]);
             }
             else {
-                getSearchSuggestions();
+                // getSearchSuggestions();
             }
         }, 300);
 

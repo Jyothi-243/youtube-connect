@@ -153,11 +153,12 @@
     display: flex;
     flex-direction: column;
     margin: 12px;
-
+    width: 100%;
 }
 
 .watch-video-container {
     /* margin: 12px; */
+    width: 100%;
 }
 
 .comment-section {
@@ -176,4 +177,65 @@
     padding-left: 20px;
     margin-left: 28px;
     border-left: 1px solid black;
+}
+
+.watch-video-container {
+    display: flex;
+    width: 100%;
+}
+
+.live-chat-container {
+    margin-left: 12px;
+    border: 1px solid black;
+    padding: 12px;
+    font-weight: 600;
+    height: 580px;
+    min-width: 496px;
+    background-color: rgb(250, 247, 247);
+    text-align: center;
+    border-radius: 12px;
+    overflow: hidden;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.chat-message-container {
+    display: flex;
+    align-items: center;
+    /* items-center in tailwind css */
+    box-shadow: 4px 4px lightgrey;
+    margin: 12px 0;
+}
+
+.chat-name {
+    font-size: 20px;
+    font-weight: 600;
+    padding: 0 12px;
+}
+
+.add-input-box {
+    border: 1px solid black;
+    width: 528px;
+    margin: 4px 12px;
+}
+
+.add-input-box>input {
+    align-items: center;
+    min-height: 40px;
+    width: 360px;
+    background-color: #f0f0f0;
+    border-radius: 12px;
+    box-shadow: 2px 2px 2px #f0f0f0;
+    margin: 12px;
+    padding: 0 12px;
+}
+.add-input-box>button{
+    background-color: rgb(175, 238, 175);
+    padding: 10px;
+    border-radius: 8px;
+    &:hover{
+        cursor: pointer;    
+        background-color:  rgb(129, 228, 129);
+    }
 }
